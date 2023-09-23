@@ -37,8 +37,9 @@ jobs:
         with:
           node-version: 18.18
       - name: Install dependencies
-        working-directory: ./
-        run: npm install
+        run: |
+          cd $GITHUB_WORKSPACE
+          npm install
       - name: build
         env:
           BASE_PATH: '/projectTri1'
