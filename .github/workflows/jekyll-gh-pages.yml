@@ -64,7 +64,7 @@ name: Build and Deploy Svelte Site
 on:
   push:
     branches:
-      - main # You can change this to your main branch name
+      - ["master"] # You can change this to your main branch name
 
 jobs:
   build:
@@ -77,7 +77,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x # Use a valid Node.js version
+          node-version: 14
 
       - name: Install dependencies
         run: npm install
