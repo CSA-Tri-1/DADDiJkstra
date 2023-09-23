@@ -37,7 +37,6 @@ jobs:
         with:
           node-version: 18.18
       - name: Install dependencies
-        working-directory: /projectTri1
         run: npm install
       - name: build
         env:
