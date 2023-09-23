@@ -26,7 +26,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Cache Node.js dependencies
+      - name: Cache Node.js dependencies
         uses: actions/cache@v2
         with:
           path: ~/.npm
