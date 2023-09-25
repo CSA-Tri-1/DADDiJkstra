@@ -1,9 +1,9 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
-
-<style lang="postcss">
-  :global(html) {
-    background-color: theme(colors.gray.100);
-  }
-</style>
+<header>
+  <div>
+    <h1>Dijkstra</h1>
+    <h3>(Di-ji-ke-shtra)</h3>
+    <h4>pronoun</h4>
+    <h3>an algorithm for finding the shortest paths between nodes in a weighted graph</h3>
+  </div>
+  <img>
+</header>
