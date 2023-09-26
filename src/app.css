@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'SFPro-Round-Black';
+  src: url('/src/fonts/SF-Pro-Rounded-Black.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Bold';
+  src: url('/src/fonts/src/fonts/SF-Pro-Rounded-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Heavy';
+  src: url('/src/fonts/SF-Pro-Rounded-Heavy.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Light';
+  src: url('/src/fonts/SF-Pro-Rounded-Light.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Medium';
+  src: url('/src/fonts/SF-Pro-Rounded-Medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Regular';
+  src: url('/src/fonts/SF-Pro-Rounded-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Semibold';
+  src: url('/src/fonts/SF-Pro-Rounded-Semibold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Thin';
+  src: url('/src/fonts/SF-Pro-Rounded-Thin.otf') format('opentype');
+}
+@font-face {
+  font-family: 'SFPro-Round-Ultralight';
+  src: url('/src/fonts/SF-Pro-Rounded-Ultralight.otf') format('opentype');
+}

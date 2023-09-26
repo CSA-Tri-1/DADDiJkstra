@@ -4,6 +4,6 @@
 
 <Navbar/>
 
-<div class="">
+<div>
   <slot />
 </div>
