@@ -1,4 +1,4 @@
-<div>
+<div class="navbar">
   <div>
     <img src="">
   </div>
@@ -10,7 +10,7 @@
   </div>
   <div>
     <ul>
-      <il></il>
+      <il>About</il>
     </ul>
   </div>
 </div>
