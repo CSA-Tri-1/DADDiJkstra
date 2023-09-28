@@ -1,1 +1,3 @@
-<slot />
+<div class="relative">
+  <slot />
+</div>
