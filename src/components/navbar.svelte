@@ -1,16 +1,18 @@
 <div class="navbar">
-  <div>
-    <img src="">
+  <div class="w-20 h-10 rounded-full">
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <img src="/logo.png" />
   </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1 gap-2">
-      <li>App</li>
-      <li>Game</li>
+  
+  <div class="navbar bg-base-100">
+    <ul class="menu menu-horizontal px-10 gap-10">
+      <button class="btn btn-ghost">App</button>
+      <button class="btn btn-ghost">Game</button>
     </ul>
   </div>
   <div>
     <ul>
-      <il>About</il>
+      <button class="btn btn-ghost">About</button>
     </ul>
   </div>
 </div>
