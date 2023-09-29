@@ -5,6 +5,9 @@ const config = {
   kit: {
     adapter: adapter()
   },
-  preprocess: vitePreprocess()
+  preprocess: vitePreprocess(),
+  paths : {
+    assets: "/static"
+  },
 };
 export default config;
