@@ -1,7 +1,7 @@
 <div class="navbar">
   <div class="w-20 h-10 rounded-full">
     <!-- svelte-ignore a11y-missing-attribute -->
-    <p><a href="/"><img src="/logo.png" /></a></p>
+    <p><a href="/"><img src="/logo.png" />                    </a></p>
   </div>
   
   <div class="navbar bg-base-100">
