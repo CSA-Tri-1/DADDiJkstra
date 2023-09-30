@@ -4,12 +4,12 @@
   </a>
 
   <div class="md:flex space-x-10 mr-20">
-    <a href="" class="btn btn-ghost ml-16">App</a>
-    <a href="" class="btn btn-ghost">Game</a>
+    <a href="/app" class="btn btn-ghost ml-16">App</a>
+    <a href="/game" class="btn btn-ghost">Game</a>
   </div>
 
 
   <div class="navbar-end md:ml-auto md:mr-10">
-    <a href="" class="btn btn-ghost">About</a>
+    <a href="/about" class="btn btn-ghost">About</a>
   </div>
 </div>
