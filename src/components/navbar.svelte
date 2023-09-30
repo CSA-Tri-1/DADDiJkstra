@@ -1,5 +1,5 @@
 <div class="navbar bg-base-100">
-  <a href="" class="flex items-center ml-5">
+  <a href="/" class="flex items-center ml-5">
     <img src="/logo.png/" class="h-16" alt="Flowbite Logo" />
   </a>
 
