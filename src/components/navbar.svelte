@@ -7,18 +7,9 @@
     <button class="btn btn-ghost ml-16">App</button>
     <button class="btn btn-ghost">Game</button>
   </div>
-  
-  <div class="navbar bg-base-100">
-    <ul class="menu menu-horizontal px-10 gap-10">
-      <button class="btn btn-ghost">App</button>
-      <button class="btn btn-ghost">Game</button>
-    </ul>
-  </div>
-  <div>
-    <ul>
-      <button class="btn btn-ghost">About</button>
-    </ul>
+
+
+  <div class="navbar-end md:ml-auto md:mr-10">
+    <a class="btn btn-ghost">About</a>
   </div>
 </div>
-
-push
