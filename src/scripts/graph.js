@@ -1,0 +1,2 @@
+var namespace = joint.shapes;
+
