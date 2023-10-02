@@ -1,16 +1,15 @@
-<div class="navbar">
-  <div>
-    <img src="">
+<div class="navbar bg-base-100">
+  <a href="/" class="flex items-center ml-5">
+    <img src="/logo.png/" class="h-16" alt="Flowbite Logo" />
+  </a>
+
+  <div class="md:flex space-x-10 mr-20">
+    <a href="/app" class="btn btn-ghost ml-16">APP</a>
+    <a href="/game" class="btn btn-ghost">GAME</a>
   </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1 gap-2">
-      <li>App</li>
-      <li>Game</li>
-    </ul>
-  </div>
-  <div>
-    <ul>
-      <il>About</il>
-    </ul>
+
+
+  <div class="navbar-end md:ml-auto md:mr-10">
+    <a href="/about" class="btn btn-ghost">ABOUT</a>
   </div>
 </div>
