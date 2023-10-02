@@ -1,5 +1,5 @@
 <div id="main" class="h-[300vh]">
-    <div id="Dijkstra" class="bottom-0 text-center bg-gray-1080px pt-[33vh] space-y-3">
+    <div id="Dijkstra" class="bottom-0 text-center bg-gray-1080px pt-[20vh] space-y-3">
         <div class="text-6xl tracking-wide flex justify-center items-center font-SFPro-Display-Bold">Dijkstra</div>
         <div class="text-lg opacity-50 flex justify-center items-center font-SFPro-Text-Regular">(dikes-straw)</div>
         <div class="text-lg opacity-30 flex justify-center items-center font-SFPro-Text-Regular">pronoun</div>
