@@ -1,4 +1,5 @@
 // @ts-nocheck
+
 var namespace = joint.shapes;
 
 var graph = new joint.dia.Graph({}, { cellNamespace: namespace });
@@ -6,11 +7,13 @@ var graph = new joint.dia.Graph({}, { cellNamespace: namespace });
 var paper = new joint.dia.Paper({
     el: document.getElementById('interactive-graph'),
     model: graph,
-    width: 600,
-    height: 600,
+    width: 500,
+    height: 500,
     gridSize: 1,
     cellViewNamespace: namespace
 });
+
+var current_index = 1;
 
 var node = new joint.shapes.standard.Circle();
 node.position(100, 30);
@@ -37,6 +40,16 @@ link.addTo(graph);
 // const size = 40;
 
 // creating nodes on map
+
+const viewController = new ViewController({ paper});
+const editController = new EditController({ graph, paper, createLink, createNode});
+
+editController.startListening();
+
+function getNodeId() {
+    current_index++;
+    return current_index;
+}
 function createNode(id) {
     var node = new joint.shapes.standard.Circle({
         id,
@@ -55,13 +68,12 @@ function createNode(id) {
         tools: [
             new joint.elementTools.HoverConnect({
                 useModelGeometery: true,
-                trackPath: V.convertCircleToPathData(join.V(`<circle cx="${ 40 / 2 }" cy="${ 40 / 2 }" r="${ 40 / 2 }" />`))
+                trackPath: V.convertCircleToPathData(joint.V(`<circle cx="${ 40 / 2 }" cy="${ 40 / 2 }" r="${ 40 / 2 }" />`))
             }),
         ]
     }))
 
     view.hideTools();
-
     node.attr('label/text', id);
     return node;
 }
