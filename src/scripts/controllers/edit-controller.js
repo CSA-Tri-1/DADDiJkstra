@@ -60,4 +60,5 @@ function removeElement({ setStartView, setEndView, getStartView }, elementView) 
 function addElement({ createNode, size }, _evt, x, y) {
     const node = createNode(getNodeId());
     node.position(x - size / 2, y - size / 2);
+    console.log(node.position(x - size / 2, y - size / 2))
 }

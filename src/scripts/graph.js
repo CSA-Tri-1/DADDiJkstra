@@ -1,8 +1,84 @@
-// @ts-nocheck
+let startView;
+let endView;
+let pathMembersViews = [];
+const pathMemberHighlightId = 'path-member';
+const invalidPathHighlightId = 'invalid-path-member';
+const pathMemberClassName = 'path-member';
+const invalidPathClassName = 'invalid-path';
+const highlightId = 'start-highlight';
+const blueColor = '#4666E5';
+const blackColor = '#222222';
+const invalidColor = '#FF4365';
+const outlineColor = '#616161';
+const startAttrs = {
+    padding: 2,
+    attrs: {
+        stroke: blueColor,
+        'stroke-width': 2
+    }
+};
+let nextId = 8;
+let editMode = true; // temp true
+const size = 40;
+const editModePopup = document.getElementById('popup');
+const getTargetMarkerStyle = () => ({ type: 'path', d: directed ? 'M 6 -3 0 0 6 3 z' : null, fill: blackColor, stroke: blackColor });
+const getLinkStyle = () => {
+    return directed ?
+        V.createSVGStyle(`
+            .joint-link .${pathMemberClassName} {
+                stroke: ${blueColor};
+                stroke-dasharray: 5;
+                stroke-dashoffset: 100;
+                animation: dash 1.25s infinite linear;
+            }
+        `) : V.createSVGStyle(`
+            .joint-link .${pathMemberClassName} {
+                animation: stroke 0.6s ease-in-out infinite alternate;
+            }
+        `);
+}
+const getStartView = () => startView;
+const getEndView = () => endView;
+
+const graph = new joint.dia.Graph;
+const paperElement = document.getElementById('paper');
+// const paper = new joint.dia.Paper({
+//     el: paperElement,
+//     width: 800,
+//     height: 400,
+//     gridSize: 1,
+//     model: graph,
+//     sorting: joint.dia.Paper.sorting.APPROX,
+//     defaultLink: () => new joint.shapes.standard.Link({ attrs: { line: { targetMarker: getTargetMarkerStyle(), stroke: outlineColor }}}),
+//     defaultConnectionPoint: { name: 'boundary', args: { offset: 4 }},
+//     linkPinning: false,
+//     async: true,
+//     frozen: true,
+//     interactive: () => editMode,
+//     validateConnection: (cellViewS, _magnetS, cellViewT) => {
+//         const id = [cellViewS.model.id, cellViewT.model.id].sort().join();
+//         const existingLink = graph.getCell(id);
+//         const isSameCell = cellViewS.model.id === cellViewT.model.id;
+
+//         return !isSameCell && !existingLink && !cellViewT.model.isLink();
+//     },
+//     highlighting: {
+//         connecting: {
+//             name: 'mask',
+//             options: {
+//                 padding: 2,
+//                 attrs: {
+//                     stroke: blueColor,
+//                     'stroke-width': 2
+//                 }
+//             }
+//         }
+//     }
+// });
 
 var namespace = joint.shapes;
 
-var graph = new joint.dia.Graph({}, { cellNamespace: namespace });
+// var graph = new joint.dia.Graph({}, { cellNamespace: namespace });
 
 var paper = new joint.dia.Paper({
     el: document.getElementById('interactive-graph'),
@@ -37,12 +113,10 @@ link.source(node);
 link.target(node2);
 link.addTo(graph);
 
-// const size = 40;
 
-// creating nodes on map
 
-const viewController = new ViewController({ paper});
-const editController = new EditController({ graph, paper, createLink, createNode});
+const viewController = new ViewController({ paper });
+const editController = new EditController({ graph, paper, createLink, createNode });
 
 editController.startListening();
 
@@ -50,6 +124,7 @@ function getNodeId() {
     current_index++;
     return current_index;
 }
+
 function createNode(id) {
     var node = new joint.shapes.standard.Circle({
         id,
@@ -72,7 +147,7 @@ function createNode(id) {
             }),
         ]
     }))
-
+    
     view.hideTools();
     node.attr('label/text', id);
     return node;
