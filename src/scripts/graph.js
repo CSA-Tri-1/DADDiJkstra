@@ -1,5 +1,6 @@
 let startView;
 let endView;
+let directed = false;
 let pathMembersViews = [];
 const pathMemberHighlightId = 'path-member';
 const invalidPathHighlightId = 'invalid-path-member';
