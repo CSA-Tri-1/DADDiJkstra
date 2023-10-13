@@ -17,7 +17,7 @@ const startAttrs = {
         'stroke-width': 2
     }
 };
-let nextId = 8;
+let nextId = 0;
 let editMode = true; // temp true
 const size = 40;
 const editModePopup = document.getElementById('popup');
@@ -41,82 +41,82 @@ const getStartView = () => startView;
 const getEndView = () => endView;
 
 const graph = new joint.dia.Graph;
-const paperElement = document.getElementById('paper');
-// const paper = new joint.dia.Paper({
-//     el: paperElement,
-//     width: 800,
-//     height: 400,
-//     gridSize: 1,
-//     model: graph,
-//     sorting: joint.dia.Paper.sorting.APPROX,
-//     defaultLink: () => new joint.shapes.standard.Link({ attrs: { line: { targetMarker: getTargetMarkerStyle(), stroke: outlineColor }}}),
-//     defaultConnectionPoint: { name: 'boundary', args: { offset: 4 }},
-//     linkPinning: false,
-//     async: true,
-//     frozen: true,
-//     interactive: () => editMode,
-//     validateConnection: (cellViewS, _magnetS, cellViewT) => {
-//         const id = [cellViewS.model.id, cellViewT.model.id].sort().join();
-//         const existingLink = graph.getCell(id);
-//         const isSameCell = cellViewS.model.id === cellViewT.model.id;
+const paperElement = document.getElementById('interactive-graph');
+const paper = new joint.dia.Paper({
+    el: paperElement,
+    width: 800,
+    height: 400,
+    gridSize: 1,
+    model: graph,
+    sorting: joint.dia.Paper.sorting.APPROX,
+    // defaultLink: () => new joint.shapes.standard.Link({ attrs: { line: { targetMarker: getTargetMarkerStyle(), stroke: outlineColor }}}),
+    // defaultConnectionPoint: { name: 'boundary', args: { offset: 4 }},
+    // linkPinning: false,
+    // async: true,
+    // frozen: true,
+    // interactive: () => editMode,
+    // validateConnection: (cellViewS, _magnetS, cellViewT) => {
+    //     const id = [cellViewS.model.id, cellViewT.model.id].sort().join();
+    //     const existingLink = graph.getCell(id);
+    //     const isSameCell = cellViewS.model.id === cellViewT.model.id;
 
-//         return !isSameCell && !existingLink && !cellViewT.model.isLink();
-//     },
-//     highlighting: {
-//         connecting: {
-//             name: 'mask',
-//             options: {
-//                 padding: 2,
-//                 attrs: {
-//                     stroke: blueColor,
-//                     'stroke-width': 2
-//                 }
-//             }
-//         }
-//     }
-// });
+    //     return !isSameCell && !existingLink && !cellViewT.model.isLink();
+    // },
+    // highlighting: {
+    //     connecting: {
+    //         name: 'mask',
+    //         options: {
+    //             padding: 2,
+    //             attrs: {
+    //                 stroke: blueColor,
+    //                 'stroke-width': 2
+    //             }
+    //         }
+    //     }
+    // }
+});
 
 var namespace = joint.shapes;
 
 // var graph = new joint.dia.Graph({}, { cellNamespace: namespace });
 
-var paper = new joint.dia.Paper({
-    el: document.getElementById('interactive-graph'),
-    model: graph,
-    width: 500,
-    height: 500,
-    gridSize: 1,
-    cellViewNamespace: namespace
-});
+// var paper = new joint.dia.Paper({
+//     el: document.getElementById('interactive-graph'),
+//     model: graph,
+//     width: 500,
+//     height: 500,
+//     gridSize: 1,
+//     cellViewNamespace: namespace
+// });
 
-var current_index = 1;
+var current_index = 0;
 
-var node = new joint.shapes.standard.Circle();
-node.position(100, 30);
-node.resize(100, 40);
-node.attr({
-    body: {
-        fill: 'black'
-    },
-    label: {
-        fill: 'white'
-    }
-});
-node.attr('label/text', '1');
-node.addTo(graph)
-var node2 = node.clone();
-node2.translate(300, 0);
-node2.attr('label/text', '2');
-node2.addTo(graph)
-var link = new joint.shapes.standard.Link();
-link.source(node);
-link.target(node2);
-link.addTo(graph);
+// var node = new joint.shapes.standard.Circle();
+// node.position(100, 30);
+// node.resize(100, 40);
+// node.attr({
+//     body: {
+//         fill: 'black'
+//     },
+//     label: {
+//         fill: 'white'
+//     }
+// });
+// node.attr('label/text', '1');
+// node.addTo(graph)
+// var node2 = node.clone();
+// node2.translate(300, 0);
+// node2.attr('label/text', '2');
+// node2.addTo(graph)
+// var link = new joint.shapes.standard.Link();
+// link.source(node);
+// link.target(node2);
+// link.addTo(graph);
 
 
 
 const viewController = new ViewController({ paper });
-const editController = new EditController({ graph, paper, createLink, createNode });
+const editController = new EditController({ graph, paper, createLink, createNode, setStartView, setEndView, getStartView, size });
 
 editController.startListening();
 
@@ -180,4 +180,25 @@ function createLink(s, t) {
 
     view.hideTools();
 }
- 
+
+function setStartView(elementView) {
+    hidePath();
+    if (startView) {
+        joint.highlighters.mask.remove(startView, highlightId);
+        joint.highlighters.addClass.remove(startView, invalidPathHighlightId);
+    }
+
+    if (endView) {
+        joint.highlighters.addClass.remove(endView, invalidPathHighlightId);
+    }
+
+    if (elementView) {
+        joint.highlighters.mask.add(elementView, 'body', highlightId, startAttrs);
+    }
+    startView = elementView;
+}
+
+function setEndView(elementView) {
+    endView = elementView;
+}
+

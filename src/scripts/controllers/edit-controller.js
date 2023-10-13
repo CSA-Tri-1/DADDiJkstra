@@ -49,16 +49,17 @@ function replaceLink({ createLink }, link, _collection, opt) {
 
 function removeElement({ setStartView, setEndView, getStartView }, elementView) {
     const pathStart = getStartView();
-
+    console.log()
     if (elementView.model.id === pathStart.model.id) {
         setStartView(null);
         setEndView(null);
     }
+    
     elementView.model.remove();
 }
 
 function addElement({ createNode, size }, _evt, x, y) {
     const node = createNode(getNodeId());
     node.position(x - size / 2, y - size / 2);
-    console.log(node.position(x - size / 2, y - size / 2))
 }
+
