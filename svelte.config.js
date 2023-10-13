@@ -7,7 +7,8 @@ const config = {
   },
   preprocess: vitePreprocess(),
   paths : {
-    assets: "/static"
+    assets: "/static",
+    scripts: "/src/scripts"
   },
 };
 export default config;
