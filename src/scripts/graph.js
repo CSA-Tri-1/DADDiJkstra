@@ -44,37 +44,12 @@ const getEndView = () => endView;
 const graph = new joint.dia.Graph;
 const paperElement = document.getElementById('interactive-graph');
 const paper = new joint.dia.Paper({
-    el: paperElement,
+    el: document.getElementById('interactive-graph'),
     width: 800,
     height: 400,
     gridSize: 1,
     model: graph,
     sorting: joint.dia.Paper.sorting.APPROX,
-    // defaultLink: () => new joint.shapes.standard.Link({ attrs: { line: { targetMarker: getTargetMarkerStyle(), stroke: outlineColor }}}),
-    // defaultConnectionPoint: { name: 'boundary', args: { offset: 4 }},
-    // linkPinning: false,
-    // async: true,
-    // frozen: true,
-    // interactive: () => editMode,
-    // validateConnection: (cellViewS, _magnetS, cellViewT) => {
-    //     const id = [cellViewS.model.id, cellViewT.model.id].sort().join();
-    //     const existingLink = graph.getCell(id);
-    //     const isSameCell = cellViewS.model.id === cellViewT.model.id;
-
-    //     return !isSameCell && !existingLink && !cellViewT.model.isLink();
-    // },
-    // highlighting: {
-    //     connecting: {
-    //         name: 'mask',
-    //         options: {
-    //             padding: 2,
-    //             attrs: {
-    //                 stroke: blueColor,
-    //                 'stroke-width': 2
-    //             }
-    //         }
-    //     }
-    // }
 });
 
 var namespace = joint.shapes;
@@ -203,3 +178,4 @@ function setEndView(elementView) {
     endView = elementView;
 }
 
+paper.render();
